@@ -81,6 +81,8 @@
     .ccf-a      { background: #9f3600; --b1: var(--on); --b2: var(--on); --b3: var(--on); }
     .ccf-b      { background: #e05e29; --b1: var(--on); --b2: var(--on); }
     .ccf-c      { background: #fb9069; --b1: var(--on); }
+    .thesis { background: #f1f5f9; color: #334155; box-shadow: inset 0 0 0 1px #cbd5e1; }
+    .thesis::before { display: none; }
     .rank + .rank { margin-left: 0.25rem; }
     .rank-legend .rank { margin-left: 0; }
   </style>
@@ -214,47 +216,8 @@
     </span>
   </div>
 
-  <!-- Highlighted A* Publications -->
-  <div class="mb-6">
-    <h4 class="text-lg font-semibold text-slate-800 mb-3">Top-tier Conference Publications (CORE A* & CCF-A)</h4>
-
-    <article class="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-500">
-      <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
-        <h4 class="font-medium">
-          Polynomial Invariant Generation for Floating Point Programs
-        </h4>
-        <span class="tag tag-ver">Verification</span>
-      </div>
-      <p class="text-sm text-slate-500">
-        July 2026 — <span class="font-semibold">CAV'26</span>
-        <span class="whitespace-nowrap"><span class="rank core core-astar" title="CORE A* (CORE scale: A* &gt; A &gt; B &gt; C)">CORE A*</span><span class="rank ccf ccf-a" title="CCF-A (CCF scale: A &gt; B &gt; C)">CCF-A</span></span>
-      </p>
-      <p class="mt-2 text-sm text-slate-700">
-        Authors: X. Cai, L. Chen, H. Fu
-      </p>
-    </article>
-
-    <article class="bg-white p-5 rounded-xl shadow-md border-l-4 border-blue-500 mt-4">
-      <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
-        <h4 class="font-medium">
-          Faster Chaitin-like Register Allocation via Grammatical Decompositions of CFGs
-        </h4>
-        <span class="tag tag-opt">Optimization</span>
-      </div>
-      <p class="text-sm text-slate-500">
-        Mar 2025 — <span class="font-semibold">ASPLOS'25</span>
-        <span class="whitespace-nowrap"><span class="rank core core-astar" title="CORE A* (CORE scale: A* &gt; A &gt; B &gt; C)">CORE A*</span><span class="rank ccf ccf-a" title="CCF-A (CCF scale: A &gt; B &gt; C)">CCF-A</span></span>
-      </p>
-      <p class="mt-2 text-sm text-slate-700">
-        Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
-      </p>
-    </article>
-  </div>
-
-  <!-- Other Publications -->
-  <div>
-    <h4 class="text-lg font-semibold text-slate-800 mb-3">Other Publications</h4>
-
+  <!-- All publications, newest first -->
+  <div class="space-y-4">
     <article class="bg-white p-5 rounded-xl shadow-sm">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
@@ -268,7 +231,23 @@
       </p>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm mt-4">
+    <article class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
+        <h4 class="font-medium">
+          Polynomial Invariant Generation for Floating Point Programs
+        </h4>
+        <span class="tag tag-ver">Verification</span>
+      </div>
+      <p class="text-sm text-slate-500">
+        Jul 2026 — CAV'26
+        <span class="whitespace-nowrap"><span class="rank core core-astar" title="CORE A* (CORE scale: A* &gt; A &gt; B &gt; C)">CORE A*</span><span class="rank ccf ccf-a" title="CCF-A (CCF scale: A &gt; B &gt; C)">CCF-A</span></span>
+      </p>
+      <p class="mt-2 text-sm text-slate-700">
+        Authors: X. Cai, L. Chen, H. Fu
+      </p>
+    </article>
+
+    <article class="bg-white p-5 rounded-xl shadow-sm">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Series-Parallel-Loop Decompositions of Control-flow Graphs
@@ -284,7 +263,7 @@
       </p>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm mt-4">
+    <article class="bg-white p-5 rounded-xl shadow-sm">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Efficient Algorithms for Partial Constraint Satisfaction Problems over Control-flow Graphs
@@ -300,7 +279,39 @@
       </p>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm mt-4">
+    <article class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
+        <h4 class="font-medium">
+          Enhancing Compiler Optimization Efficiency through Grammatical Decompositions of Control-Flow Graphs
+        </h4>
+        <span class="tag tag-opt">Optimization</span>
+      </div>
+      <p class="text-sm text-slate-500">
+        Jul 2025 — MPhil, HKUST
+        <span class="rank thesis">Thesis</span>
+      </p>
+      <p class="mt-2 text-sm text-slate-700">
+        Author: X. Cai
+      </p>
+    </article>
+
+    <article class="bg-white p-5 rounded-xl shadow-sm">
+      <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
+        <h4 class="font-medium">
+          Faster Chaitin-like Register Allocation via Grammatical Decompositions of CFGs
+        </h4>
+        <span class="tag tag-opt">Optimization</span>
+      </div>
+      <p class="text-sm text-slate-500">
+        Mar 2025 — ASPLOS'25
+        <span class="whitespace-nowrap"><span class="rank core core-astar" title="CORE A* (CORE scale: A* &gt; A &gt; B &gt; C)">CORE A*</span><span class="rank ccf ccf-a" title="CCF-A (CCF scale: A &gt; B &gt; C)">CCF-A</span></span>
+      </p>
+      <p class="mt-2 text-sm text-slate-700">
+        Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
+      </p>
+    </article>
+
+    <article class="bg-white p-5 rounded-xl shadow-sm">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Faster Lifetime-optimal Speculative Partial Redundancy Elimination for Goto-free Programs
@@ -315,20 +326,6 @@
         Authors: X. Cai, A.K. Goharshady
       </p>
     </article>
-
-    <article class="bg-white p-5 rounded-xl shadow-sm mt-4">
-      <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
-        <h4 class="font-medium">
-          Enhancing Compiler Optimization Efficiency through Grammatical Decompositions of Control-Flow Graphs
-        </h4>
-        <span class="tag tag-opt">Optimization</span>
-      </div>
-      <p class="text-sm text-slate-500">MPhil Thesis - HKUST</p>
-      <p class="mt-2 text-sm text-slate-700">
-        Author: X. Cai
-      </p>
-    </article>
-
   </div>
 </section>
 
