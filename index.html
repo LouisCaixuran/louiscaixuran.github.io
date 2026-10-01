@@ -43,7 +43,35 @@
     .tag { padding: 0.125rem 0.625rem; border-radius: 9999px; flex-shrink: 0; }
     .tag-opt { background: #ecfdf5; color: #047857; box-shadow: inset 0 0 0 1px #a7f3d0; }
     .tag-ver { background: #f5f3ff; color: #6d28d9; box-shadow: inset 0 0 0 1px #ddd6fe; }
-    .rank { padding: 0.0625rem 0.4rem; border-radius: 0.25rem; margin-left: 0.25rem; background: #f8fafc; color: #334155; box-shadow: inset 0 0 0 1px #cbd5e1; }
+
+    /* Venue ranks: one-hue ramp, darker fill and more meter bars = higher tier.
+       Level 4: CORE A* / CCF-A, 3: CORE A / CCF-B, 2: CORE B / CCF-C, 1: CORE C */
+    .rank {
+      gap: 0.3rem;
+      padding: 0.0625rem 0.45rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      --on: #0f172a;
+      --off: rgba(15, 23, 42, 0.28);
+    }
+    .rank::before {
+      content: "";
+      flex-shrink: 0;
+      width: 11px;
+      height: 9px;
+      background:
+        linear-gradient(var(--b1), var(--b1)) 0 100% / 2px 3px no-repeat,
+        linear-gradient(var(--b2), var(--b2)) 3px 100% / 2px 5px no-repeat,
+        linear-gradient(var(--b3), var(--b3)) 6px 100% / 2px 7px no-repeat,
+        linear-gradient(var(--b4), var(--b4)) 9px 100% / 2px 9px no-repeat;
+    }
+    .rank-4, .rank-3 { color: #fff; --on: #fff; --off: rgba(255, 255, 255, 0.35); }
+    .rank-4 { background: #0d366b; --b1: var(--on); --b2: var(--on); --b3: var(--on); --b4: var(--on); }
+    .rank-3 { background: #1c5cab; --b1: var(--on); --b2: var(--on); --b3: var(--on); --b4: var(--off); }
+    .rank-2 { background: #3987e5; color: #0f172a; --b1: var(--on); --b2: var(--on); --b3: var(--off); --b4: var(--off); }
+    .rank-1 { background: #86b6ef; color: #0f172a; --b1: var(--on); --b2: var(--off); --b3: var(--off); --b4: var(--off); }
+    .rank + .rank { margin-left: 0.25rem; }
+    .rank-legend .rank { margin-left: 0; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased leading-relaxed">
@@ -155,7 +183,16 @@
 
     <!-- PUBLICATIONS -->
    <section id="publications" class="mb-10">
-  <h3 class="text-xl font-semibold mb-4">Selected Publications & Manuscripts</h3>
+  <h3 class="text-xl font-semibold mb-2">Selected Publications & Manuscripts</h3>
+
+  <!-- Legend for venue rank badges (highest tier first) -->
+  <div class="rank-legend mb-5 flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
+    <span class="mr-1">Venue rank, higher → lower:</span>
+    <span class="rank rank-4">CORE A* · CCF-A</span>
+    <span class="rank rank-3">CORE A · CCF-B</span>
+    <span class="rank rank-2">CORE B · CCF-C</span>
+    <span class="rank rank-1">CORE C</span>
+  </div>
 
   <!-- Highlighted A* Publications -->
   <div class="mb-6">
@@ -170,7 +207,7 @@
       </div>
       <p class="text-sm text-slate-500">
         July 2026 — <span class="font-semibold">CAV'26</span>
-        <span class="rank">CORE A*</span><span class="rank">CCF-A</span>
+        <span class="whitespace-nowrap"><span class="rank rank-4" title="CORE A*: top tier">CORE A*</span><span class="rank rank-4" title="CCF-A: top tier">CCF-A</span></span>
       </p>
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, L. Chen, H. Fu
@@ -186,7 +223,7 @@
       </div>
       <p class="text-sm text-slate-500">
         Mar 2025 — <span class="font-semibold">ASPLOS'25</span>
-        <span class="rank">CORE A*</span><span class="rank">CCF-A</span>
+        <span class="whitespace-nowrap"><span class="rank rank-4" title="CORE A*: top tier">CORE A*</span><span class="rank rank-4" title="CCF-A: top tier">CCF-A</span></span>
       </p>
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
@@ -220,7 +257,7 @@
       </div>
       <p class="text-sm text-slate-500">
         Feb 2026 — JSA'26
-        <span class="rank">CCF-B</span>
+        <span class="rank rank-3" title="CCF-B: second tier">CCF-B</span>
       </p>
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
@@ -236,7 +273,7 @@
       </div>
       <p class="text-sm text-slate-500">
         Dec 2025 — SETTA'25
-        <span class="rank">CCF-C</span>
+        <span class="rank rank-2" title="CCF-C: third tier">CCF-C</span>
       </p>
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady
@@ -252,7 +289,7 @@
       </div>
       <p class="text-sm text-slate-500">
         Nov 2024 — SETTA'24
-        <span class="rank">CCF-C</span>
+        <span class="rank rank-2" title="CCF-C: third tier">CCF-C</span>
       </p>
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady
