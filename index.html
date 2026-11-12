@@ -352,7 +352,7 @@
       </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/MPhil-Thesis.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Enhancing Compiler Optimization Efficiency through Grammatical Decompositions of Control-Flow Graphs
@@ -366,6 +366,10 @@
       <p class="mt-2 text-sm text-slate-700">
         Author: X. Cai
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>Compiler optimizations, including register allocation and Lifetime-optimal Speculative Partial Redundancy Elimination (LOSPRE), present inherent complexities that are often addressed through tree decomposition algorithms. However, these approaches often neglect important sparsity aspects of Control Flow Graphs (CFGs) and incur significant computational costs during decomposition, leading to inefficiencies in compiler optimization tasks. This thesis introduces the SPL (Series-Parallel-Loop) decomposition, a novel framework that we have developed to provide optimal solutions to these challenges. A significant contribution of this research is the formulation of a general solution for Partial Constraint Satisfaction Problems (PCSPs) within graph structures, which is subsequently applied to three specific optimization problems. First, the SPL decomposition improves register allocation by accurately modeling the interference graph of variables, facilitating efficient and optimal register assignments that yield marked performance enhancements across various benchmarks. Second, the general solution for PCSPs is leveraged to optimize LOSPRE, enabling effective identification and elimination of redundancies in program execution. Finally, this thesis addresses the placement of bank selection instructions, focusing on optimizing the allocation of instructions that dictate memory bank access during program execution to enhance data retrieval efficiency and reduce latency. Through extensive experimentation, the proposed algorithms exhibit significant performance improvements over existing methods, achieving optimal solutions for a diverse range of benchmark instances. In conclusion, this work establishes the SPL decomposition as a powerful instrument for tackling complex compiler optimization problems, demonstrating its effectiveness in developing efficient algorithms for register allocation, LOSPRE, and bank selection, thereby contributing to enhanced performance in modern compilers.</p>
+      </template>
     </article>
 
     <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/ASPLOS25.pdf">
