@@ -332,7 +332,7 @@
       </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/SETTA25.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Efficient Algorithms for Partial Constraint Satisfaction Problems over Control-flow Graphs
@@ -346,6 +346,10 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>In this work, we focus on the Partial Constraint Satisfaction Problem (PCSP) over control-flow graphs (CFGs) of programs. PCSP serves as a generalization of the well-known Constraint Satisfaction Problem (CSP). In the CSP framework, we define a set of variables, a set of constraints, and a finite domain <i>D</i> that encompasses all possible values for each variable. The objective is to assign a value to each variable in such a way that all constraints are satisfied. In the graph variant of CSP, an underlying graph is considered and we have one variable corresponding to each vertex of the graph and one or several constraints corresponding to each edge. In PCSPs, we allow for certain constraints to be violated at a specified cost, aiming to find a solution that minimizes the total cost. Numerous classical compiler optimization tasks can be framed as PCSPs over control-flow graphs. Examples include Register Allocation, Lifetime-optimal Speculative Partial Redundancy Elimination (LOSPRE), and Optimal Placement of Bank Selection Instructions. On the other hand, it is well-known that control-flow graphs of structured programs are sparse and decomposable in a variety of ways. In this work, we rely on the Series-Parallel-Loop (SPL) decompositions as introduced by [7]. Our main contribution is a general algorithm for PCSPs over SPL graphs with a time complexity of <i>O</i>(|<i>G</i>| · |<i>D</i>|<sup>6</sup>), where |<i>G</i>| represents the size of the control-flow graph. Note that for any fixed domain <i>D</i>, this yields a linear-time solution. Our algorithm can be seen as a generalization and unification of previous SPL-based approaches for register allocation and LOSPRE. In addition, we provide experimental results over another classical PCSP task, i.e. Optimal Bank Selection, achieving runtimes four times better than the previous state of the art.</p>
+      </template>
     </article>
 
     <article class="bg-white p-5 rounded-xl shadow-sm">
@@ -364,7 +368,7 @@
       </p>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/ASPLOS25.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Faster Chaitin-like Register Allocation via Grammatical Decompositions of CFGs
@@ -378,6 +382,13 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>It is well-known that control-flow graphs (CFGs) of structured programs are sparse. This sparsity has been previously formalized in terms of graph parameters such as treewidth and pathwidth and used to design faster parameterized algorithms for numerous compiler optimization, model checking and program analysis tasks.</p>
+        <p>In this work, we observe that the known graph sparsity parameters fail to exactly capture the kind of sparsity exhibited by CFGs. For example, while all structured CFGs have a treewidth of at most 7, not every graph with a treewidth of 7 or less is realizable as a CFG. As a result, current parameterized algorithms are solving the underlying graph problems over a more general family of graphs than the CFGs.</p>
+        <p>To address this problem, we design a new but natural concept of graph decomposition based on a grammar that precisely captures the set of graphs that can be realized as CFGs of programs. We show that our notion of decomposition enables the same type of dynamic programming algorithms that are often used in treewidth/pathwidth-based methods. As two concrete applications, using our grammatical decomposition of CFGs, we provide asymptotically more efficient algorithms for two variants of the classical problem of register allocation. Our algorithms are asymptotically faster not only in comparison with the non-parameterized solutions for these problems, but also compared to the state-of-the-art treewidth/pathwidth-based approaches in the literature. For minimum-cost register allocation over a fixed number of registers, we provide an algorithm with a runtime of <i>O</i>(|<i>G</i>| · |𝕍|<sup>5·<i>r</i></sup>) where |<i>G</i>| is the size of the program, 𝕍 is the set of program variables and <i>r</i> is the number of registers. In contrast, the previous treewidth-based algorithm had a runtime of <i>O</i>(|<i>G</i>| · |𝕍|<sup>16·<i>r</i></sup>). For the decision problem of spill-free register allocation, our algorithm’s runtime is <i>O</i>(|<i>G</i>| · <i>r</i><sup>5·<i>r</i>+5</sup>) whereas the previous works had a runtime of <i>O</i>(|<i>G</i>| · <i>r</i><sup>16·<i>r</i></sup>).</p>
+        <p>Finally, we provide extensive experimental results on spill-free register allocation, showcasing the scalability of our approach in comparison to previous state-of-the-art methods. Most notably, our approach can handle real-world instances with up to 20 registers, whereas previous works could only scale to 8. This is a significant improvement since most ubiquitous architectures, such as the x86 family, have 16 registers. For such architectures, our approach is the first-ever <em>exact</em> algorithm that scales up to solve the real-world instances of spill-free register allocation.</p>
+      </template>
     </article>
 
     <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/SETTA24.pdf">
