@@ -43,6 +43,14 @@
     .tag { padding: 0.125rem 0.625rem; border-radius: 9999px; flex-shrink: 0; }
     .tag-opt { background: #ecfdf5; color: #047857; box-shadow: inset 0 0 0 1px #a7f3d0; }
     .tag-ver { background: #f5f3ff; color: #6d28d9; box-shadow: inset 0 0 0 1px #ddd6fe; }
+    /* Publication cards that open an abstract dialog */
+    .pub-card { cursor: pointer; transition: box-shadow 0.15s ease; }
+    .pub-card:hover { box-shadow: 0 4px 14px rgba(15, 23, 42, 0.10); }
+    .pub-more { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.8125rem; font-weight: 500; color: #3730a3; }
+    .pub-more::after { content: "→"; }
+    .pub-more:hover { text-decoration: underline; }
+    #abstract-dialog { border: 0; padding: 0; border-radius: 0.75rem; width: min(42rem, calc(100% - 2rem)); max-height: 85vh; color: #0f172a; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25); }
+    #abstract-dialog::backdrop { background: rgba(15, 23, 42, 0.55); }
     .status { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; line-height: 1.25rem; color: #475569; }
     .status::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: var(--dot); flex-shrink: 0; }
     .status-review { --dot: #f59e0b; }
@@ -265,7 +273,7 @@
 
   <!-- All publications, newest first -->
   <div class="space-y-4">
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/MARBLE26.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Extending Programmable Blockchain Protocols to Enable and Incentivize Parallel Execution of Smart Contracts
@@ -276,9 +284,14 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: T. Barakbayeva, X. Cai, Z. Cai, A.K. Goharshady
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>Modern nodes on blockchain networks are typically deployed on multi-core hardware. However, in current blockchain consensus protocols, such as those of Cardano and Ethereum, the nodes have to process the transactions in each block in a sequential manner according to the order specified by the producer, leaving their parallel computational resources underutilized. The main challenge in parallel execution comes from transaction dependencies, e.g. different functions reading from and writing to the same location in a contract’s storage. This makes safe concurrent execution difficult. A node that wishes to use concurrency currently has to pay the overhead of finding a suitable concurrent schedule. More importantly, since these protocols do not assume parallel execution, the amount of computation performed in each block has to be limited by the sequential computational power of the weakest nodes. Thus, any benefit obtained from parallelization does not translate to shorter block times or higher throughput.</p>
+        <p>In this work, we solve these problems by presenting two novel parallel blockchain protocols that extend the standard eUTXO and account-based models and provide native support for parallelization. In our protocols, the burden of finding an efficient concurrent schedule is shifted to the producers, who typically have much more computational power than the nodes. Moreover, the producers are incentivized to effectively utilize parallelization and minimize the total runtime (makespan). As a result, the computational limits in each block and the times between any two consecutive blocks can be set according to the <em>parallel</em> (rather than sequential) computational power of our nodes, leading to significant improvements in throughput. The full version of the paper is available at HAL hal-05724231.</p>
+      </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/CAV26.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Polynomial Invariant Generation for Floating Point Programs
@@ -292,9 +305,13 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, L. Chen, H. Fu
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>In numeric-intensive computations, it is well known that the execution of floating-point programs is imprecise as floating-point arithmetic incurs round-off errors. Although round-off errors are small for a single floating-point operation, the aggregation of such errors may be dramatic and cause catastrophic program failures. Therefore, to ensure the correctness of floating-point programs, round-off error needs to be carefully taken into account. In this work, we consider polynomial invariant generation for floating-point programs, aiming at generating tight invariants under the perturbation of round-off errors. Our contribution is a novel framework for applying polynomial constraint solving to address the invariant generation problem, which is also the first polynomial constraint solving based approach that handles floating-point errors to our best knowledge. In our framework, we propose a novel combination of round-off error analysis and polynomial constraint solving, aiming to circumvent the cost of handling a large number of error variables in the floating-point model. Experimental results over a variety of challenging benchmarks show that our framework outperforms SOTA approaches in both time efficiency and the precision of generated invariants.</p>
+      </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/JSA26.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Series-Parallel-Loop Decompositions of Control-flow Graphs
@@ -308,9 +325,14 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>Control-flow graphs (CFGs) of structured programs are well known to exhibit strong sparsity properties. Traditionally, this sparsity has been modeled using graph parameters such as treewidth and pathwidth, enabling the development of faster parameterized algorithms for tasks in compiler optimization, model checking, and program analysis. However, these parameters only approximate the structural constraints of CFGs: although every structured CFG has treewidth at most 7, many graphs with treewidth at most 7 cannot arise as CFGs. As a result, existing parameterized techniques are optimized for a substantially broader class of graphs than those encountered in practice.</p>
+        <p>In this work, we introduce a new grammar-based decomposition framework that characterizes <em>exactly</em> the class of control-flow graphs generated by structured programs. Our decomposition is intuitive, mirrors the syntactic structure of programs, and remains fully compatible with the dynamic-programming paradigm of treewidth-based methods. Using this framework, we design improved algorithms for two classical compiler optimization problems: <em>Register Allocation</em> and <em>Lifetime-Optimal Speculative Partial Redundancy Elimination (LOSPRE)</em>. Extensive experimental evaluation demonstrates significant performance improvements over previous state-of-the-art approaches, highlighting the benefits of using decompositions tailored specifically to CFGs.</p>
+      </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/SETTA25.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Efficient Algorithms for Partial Constraint Satisfaction Problems over Control-flow Graphs
@@ -324,9 +346,13 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>In this work, we focus on the Partial Constraint Satisfaction Problem (PCSP) over control-flow graphs (CFGs) of programs. PCSP serves as a generalization of the well-known Constraint Satisfaction Problem (CSP). In the CSP framework, we define a set of variables, a set of constraints, and a finite domain <i>D</i> that encompasses all possible values for each variable. The objective is to assign a value to each variable in such a way that all constraints are satisfied. In the graph variant of CSP, an underlying graph is considered and we have one variable corresponding to each vertex of the graph and one or several constraints corresponding to each edge. In PCSPs, we allow for certain constraints to be violated at a specified cost, aiming to find a solution that minimizes the total cost. Numerous classical compiler optimization tasks can be framed as PCSPs over control-flow graphs. Examples include Register Allocation, Lifetime-optimal Speculative Partial Redundancy Elimination (LOSPRE), and Optimal Placement of Bank Selection Instructions. On the other hand, it is well-known that control-flow graphs of structured programs are sparse and decomposable in a variety of ways. In this work, we rely on the Series-Parallel-Loop (SPL) decompositions as introduced by [7]. Our main contribution is a general algorithm for PCSPs over SPL graphs with a time complexity of <i>O</i>(|<i>G</i>| · |<i>D</i>|<sup>6</sup>), where |<i>G</i>| represents the size of the control-flow graph. Note that for any fixed domain <i>D</i>, this yields a linear-time solution. Our algorithm can be seen as a generalization and unification of previous SPL-based approaches for register allocation and LOSPRE. In addition, we provide experimental results over another classical PCSP task, i.e. Optimal Bank Selection, achieving runtimes four times better than the previous state of the art.</p>
+      </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/MPhil-Thesis.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Enhancing Compiler Optimization Efficiency through Grammatical Decompositions of Control-Flow Graphs
@@ -340,9 +366,13 @@
       <p class="mt-2 text-sm text-slate-700">
         Author: X. Cai
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>Compiler optimizations, including register allocation and Lifetime-optimal Speculative Partial Redundancy Elimination (LOSPRE), present inherent complexities that are often addressed through tree decomposition algorithms. However, these approaches often neglect important sparsity aspects of Control Flow Graphs (CFGs) and incur significant computational costs during decomposition, leading to inefficiencies in compiler optimization tasks. This thesis introduces the SPL (Series-Parallel-Loop) decomposition, a novel framework that we have developed to provide optimal solutions to these challenges. A significant contribution of this research is the formulation of a general solution for Partial Constraint Satisfaction Problems (PCSPs) within graph structures, which is subsequently applied to three specific optimization problems. First, the SPL decomposition improves register allocation by accurately modeling the interference graph of variables, facilitating efficient and optimal register assignments that yield marked performance enhancements across various benchmarks. Second, the general solution for PCSPs is leveraged to optimize LOSPRE, enabling effective identification and elimination of redundancies in program execution. Finally, this thesis addresses the placement of bank selection instructions, focusing on optimizing the allocation of instructions that dictate memory bank access during program execution to enhance data retrieval efficiency and reduce latency. Through extensive experimentation, the proposed algorithms exhibit significant performance improvements over existing methods, achieving optimal solutions for a diverse range of benchmark instances. In conclusion, this work establishes the SPL decomposition as a powerful instrument for tackling complex compiler optimization problems, demonstrating its effectiveness in developing efficient algorithms for register allocation, LOSPRE, and bank selection, thereby contributing to enhanced performance in modern compilers.</p>
+      </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/ASPLOS25.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Faster Chaitin-like Register Allocation via Grammatical Decompositions of CFGs
@@ -356,9 +386,16 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady, S. Hitarth, C.K. Lam
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>It is well-known that control-flow graphs (CFGs) of structured programs are sparse. This sparsity has been previously formalized in terms of graph parameters such as treewidth and pathwidth and used to design faster parameterized algorithms for numerous compiler optimization, model checking and program analysis tasks.</p>
+        <p>In this work, we observe that the known graph sparsity parameters fail to exactly capture the kind of sparsity exhibited by CFGs. For example, while all structured CFGs have a treewidth of at most 7, not every graph with a treewidth of 7 or less is realizable as a CFG. As a result, current parameterized algorithms are solving the underlying graph problems over a more general family of graphs than the CFGs.</p>
+        <p>To address this problem, we design a new but natural concept of graph decomposition based on a grammar that precisely captures the set of graphs that can be realized as CFGs of programs. We show that our notion of decomposition enables the same type of dynamic programming algorithms that are often used in treewidth/pathwidth-based methods. As two concrete applications, using our grammatical decomposition of CFGs, we provide asymptotically more efficient algorithms for two variants of the classical problem of register allocation. Our algorithms are asymptotically faster not only in comparison with the non-parameterized solutions for these problems, but also compared to the state-of-the-art treewidth/pathwidth-based approaches in the literature. For minimum-cost register allocation over a fixed number of registers, we provide an algorithm with a runtime of <i>O</i>(|<i>G</i>| · |𝕍|<sup>5·<i>r</i></sup>) where |<i>G</i>| is the size of the program, 𝕍 is the set of program variables and <i>r</i> is the number of registers. In contrast, the previous treewidth-based algorithm had a runtime of <i>O</i>(|<i>G</i>| · |𝕍|<sup>16·<i>r</i></sup>). For the decision problem of spill-free register allocation, our algorithm’s runtime is <i>O</i>(|<i>G</i>| · <i>r</i><sup>5·<i>r</i>+5</sup>) whereas the previous works had a runtime of <i>O</i>(|<i>G</i>| · <i>r</i><sup>16·<i>r</i></sup>).</p>
+        <p>Finally, we provide extensive experimental results on spill-free register allocation, showcasing the scalability of our approach in comparison to previous state-of-the-art methods. Most notably, our approach can handle real-world instances with up to 20 registers, whereas previous works could only scale to 8. This is a significant improvement since most ubiquitous architectures, such as the x86 family, have 16 registers. For such architectures, our approach is the first-ever <em>exact</em> algorithm that scales up to solve the real-world instances of spill-free register allocation.</p>
+      </template>
     </article>
 
-    <article class="bg-white p-5 rounded-xl shadow-sm">
+    <article class="bg-white p-5 rounded-xl shadow-sm pub-card" data-pdf="papers/SETTA24.pdf">
       <div class="flex flex-col-reverse items-start gap-1 sm:flex-row sm:justify-between sm:gap-3">
         <h4 class="font-medium">
           Faster Lifetime-optimal Speculative Partial Redundancy Elimination for Goto-free Programs
@@ -372,6 +409,10 @@
       <p class="mt-2 text-sm text-slate-700">
         Authors: X. Cai, A.K. Goharshady
       </p>
+      <button type="button" class="pub-more mt-3">Abstract &amp; PDF</button>
+      <template class="pub-abstract">
+        <p>Lifetime-optimal Speculative Partial Redundancy Elimination (LOSPRE) is one of the most classical, ubiquitous and effective techniques used by compilers for redundancy elimination, i.e. avoiding unnecessary recomputations of the same expression. State-of-the-art methods for LOSPRE over structured programs are based on treewidth, i.e. they first compute a tree decomposition of the control-flow graph of the program and then perform dynamic programming on this decomposition. In this work, we consider a different decomposition approach which is called series-parallel-loop (SPL) and was recently introduced in [8]. We present an efficient linear-time LOSPRE algorithm that builds upon SPL decompositions. We then provide extensive experimental results over the Small Device C Compiler (SDCC) benchmarks, demonstrating that our algorithm outperforms the highly-optimized treewidth-based approach of SDCC.</p>
+      </template>
     </article>
   </div>
 </section>
@@ -473,6 +514,25 @@
     </section>
   </main>
 
+  <!-- Abstract dialog, filled from the clicked publication card -->
+  <dialog id="abstract-dialog" aria-labelledby="abstract-title">
+    <div class="p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <h3 id="abstract-title" class="text-lg font-semibold leading-snug"></h3>
+        <button type="button" data-close class="shrink-0 -mr-2 -mt-1 rounded-md px-2 text-2xl leading-none text-slate-400 hover:text-slate-700" aria-label="Close">&times;</button>
+      </div>
+      <p id="abstract-venue" class="mt-2 text-sm text-slate-500"></p>
+      <p id="abstract-authors" class="mt-1 text-sm text-slate-700"></p>
+      <h4 class="mt-5 text-xs font-semibold uppercase tracking-wide text-slate-500">Abstract</h4>
+      <div id="abstract-body" class="mt-2 space-y-3 text-sm sm:text-base text-slate-700 leading-relaxed"></div>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a id="abstract-pdf" href="#" download class="inline-flex items-center gap-2 bg-brand-500 text-white text-sm px-3 py-2 rounded-md shadow-sm hover:bg-brand-700">Download PDF</a>
+        <button type="button" data-close class="inline-flex items-center px-3 py-2 rounded-md text-sm border border-slate-200 hover:bg-slate-50">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+
   <footer class="bg-white border-t">
     <div class="max-w-5xl mx-auto px-6 py-6 text-sm text-slate-500 flex items-center justify-between">
       <div>© <span id="currentYear"></span> Xuran Cai</div>
@@ -492,6 +552,26 @@
         }
       });
     });
+
+    // Clicking a publication card (or its "Abstract & PDF" button) opens its abstract in a dialog
+    const dialog = document.getElementById('abstract-dialog');
+    function openAbstract(card) {
+      document.getElementById('abstract-title').textContent = card.querySelector('h4').textContent.trim();
+      document.getElementById('abstract-venue').innerHTML = card.querySelector('p.text-slate-500').innerHTML;
+      document.getElementById('abstract-authors').textContent = card.querySelector('p.text-slate-700').textContent.trim();
+      document.getElementById('abstract-body').replaceChildren(card.querySelector('template.pub-abstract').content.cloneNode(true));
+      document.getElementById('abstract-pdf').href = card.dataset.pdf;
+      dialog.showModal();
+      dialog.scrollTop = 0;
+    }
+    document.querySelectorAll('.pub-card').forEach(card => {
+      card.addEventListener('click', e => {
+        if (!e.target.closest('a')) openAbstract(card);
+      });
+    });
+    dialog.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => dialog.close()));
+    // A click on the backdrop lands on the dialog element itself
+    dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
   </script>
 </body>
 </html>
