@@ -1,0 +1,2 @@
+# Keep PDFs byte-for-byte: no line-ending conversion, no text diffs
+*.pdf binary
